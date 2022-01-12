@@ -1,14 +1,12 @@
 # ChatApp  #
 
-![](http://g.recordit.co/JYruQDLd0h.gif)
-
 A small functional person-to-person message center application built using Django.
 It has a REST API and uses WebSockets to notify clients of new messages and 
 avoid polling.
 
 ## Architecture ##
  - When a user logs in, the frontend downloads the user list and opens a
-   Websocket connection to the server (notifications channel).
+   Websocket connection to the server
  - When a user selects another user to chat, the frontend downloads the latest
    15 messages (see settings) they've exchanged.
  - When a user sends a message, the frontend sends a POST to the REST API, then
@@ -30,15 +28,9 @@ In this case, I'm using the In-Memory channel system, but could be changed to
 the Redis backend to improve performance and spawn multiple workers in a
 distributed environment.
 
-Please take a look at the link below for more information:
-https://channels.readthedocs.io/en/latest/introduction.html
 
-
-**update 04/06/19**
 
 - using pipenv for package management
-- move to Channels 2
-- use redis as the channel layer backing store. for more information, please check [channels_redis](https://github.com/django/channels_redis)
 
 ### Database ###
 For this demo, I'm using a simple MySQL setup. If more performance is required, 
